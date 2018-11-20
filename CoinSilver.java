@@ -6,15 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CoinSilver extends Mover
+public class CoinSilver extends Tile
 {
-    /**
-     * Act - do whatever the CoinSilver wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public String coinsilver;
+    public CoinSilver(String image,int width,int heigth) {
+        super(image,width,heigth);
+    }
     public void act() 
     {
-        velocityY = 0;
-        applyVelocity();
+        setImage("coinSilver.png" );
     }    
 }

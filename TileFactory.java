@@ -1004,6 +1004,27 @@ break;
          TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
          tile.isSolid = false;
 break;
+        
+       
+         case 142:
+         tile = new CoinSilver("coinSilver.png",
+         TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+         tile.isSolid = false;
+break;
+        
+       
+         case 143:
+         tile = new DoorOpenMid("door_openMid.png",
+         TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+         tile.isSolid = false;
+break;
+        
+       
+         case 144:
+         tile = new DoorOpenTop("door_openTop.png",
+         TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+         tile.isSolid = false;
+break;
             default:
                 tile = new Tile("grassMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;

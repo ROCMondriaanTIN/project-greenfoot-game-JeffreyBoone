@@ -15,6 +15,5 @@ public class CoinGold extends Tile
     public void act() 
     {
         setImage("coinGold.png" );
-    }    
-   
+    }  
 }
