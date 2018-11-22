@@ -14,18 +14,22 @@ public class DoorOpenMid extends Tile
     }
     public void act() 
     {
-        setImage("door_openMid.png" ); 
+        if (Hero.key == 0) {
+        setImage("door_closedMid.png" );}
+        if (Hero.key == 1) {
+        setImage("door_openMid.png" );
         for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if (hero != null && getWorld() instanceof MyWorld) {
+                if ((hero != null && getWorld() instanceof MyWorld) && (Greenfoot.isKeyDown("s"))) {
                     TestWorld Test = new TestWorld();
                     Greenfoot.setWorld(Test);
                     break;
                 }
-                if (hero != null && getWorld() instanceof TestWorld) {
+                if ((hero != null && getWorld() instanceof TestWorld) && (Greenfoot.isKeyDown("s"))) {
                     MyWorld World = new MyWorld();
                     Greenfoot.setWorld(World);
                     break;
                 }
         }
+      }
     }   
 }

@@ -1025,6 +1025,20 @@ break;
          TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
          tile.isSolid = false;
 break;
+        
+       
+         case 145:
+         tile = new FireBall("fireball.png",
+         TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+         tile.isSolid = false;
+break;
+        
+       
+         case 146:
+         tile = new KeyBlue("keyBlue.png",
+         TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+         tile.isSolid = false;
+break;
             default:
                 tile = new Tile("grassMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;

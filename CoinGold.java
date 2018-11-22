@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CoinGold extends Tile
 {
-    public String coinGold;
     public CoinGold(String image,int width,int heigth) {
         super(image,width,heigth);
     }
