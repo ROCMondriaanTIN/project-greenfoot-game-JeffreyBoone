@@ -7,15 +7,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class FireBall extends Tile
-{
-    public String coinsilver;
+{    
     public FireBall(String image,int width,int heigth) {
         super(image,width,heigth);
     }
     public void act() 
     {
+        
         setImage("fireball.png" );
-        turn(15);
+        turn(5);
+        move(20);
+        move(-20);
         if (Hero.lives == 1) {
             for (Actor hero : getIntersectingObjects(Hero.class)) {
                 if (hero != null) {
@@ -35,6 +37,6 @@ public class FireBall extends Tile
                 }
               }
             }
-        
+            
     }     
 }

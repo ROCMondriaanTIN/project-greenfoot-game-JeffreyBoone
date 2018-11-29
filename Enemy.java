@@ -12,6 +12,7 @@ public class Enemy extends Mover {
     private int xMax;
     private boolean firstAct;
     private int speed;
+    Hero hero;
 
     public Enemy() {
         super();
@@ -21,7 +22,7 @@ public class Enemy extends Mover {
         firstAct = true;
         speed = 1;
     }
-
+    
     @Override
     public void act() {
         int x = getX();
@@ -44,5 +45,8 @@ public class Enemy extends Mover {
             x = xMin;
             getImage().mirrorHorizontally();
         }
+        //hero.kill();
     }
+    
+    
 }

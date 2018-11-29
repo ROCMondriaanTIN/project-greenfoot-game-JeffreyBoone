@@ -14,7 +14,7 @@ public class DoorOpenMid extends Tile
     }
     public void act() 
     {
-        if (Hero.key == 0) {
+      if (Hero.key == 0) {
         setImage("door_closedMid.png" );}
         if (Hero.key == 1) {
         setImage("door_openMid.png" );

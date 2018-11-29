@@ -14,12 +14,18 @@ public class KeyBlue extends Tile
     }
     public void act() 
     {
-        setImage("keyBlue.png" );
-        remove();
+        if (Hero.hasKeyBlue == true) {
+            setImage("niks.png" );
+    }
+        if (Hero.hasKeyBlue == false) {
+            setImage("keyBlue.png" );
+    }
+    remove();
     }  
     public void remove() {
-            if(isTouching(Hero.class)) {
+            if(isTouching(Hero.class) && Hero.hasKeyBlue == false) {
                 getWorld().removeObject(this);
+                Hero.hasKeyBlue = true;
                 Hero.key++;}
         }
 }

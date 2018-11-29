@@ -15,23 +15,21 @@ public class DoorOpenTop extends Tile
     public void act() 
     {
         if (Hero.key == 0) {
-        setImage("door_closedTop.png" );}
+            setImage("door_closedTop.png" );}
         if (Hero.key == 1) {
-        setImage("door_openTop.png" );
+            setImage("door_openTop.png" );
         for (Actor hero : getIntersectingObjects(Hero.class)) {
-               if ((hero != null && getWorld() instanceof MyWorld) && (Greenfoot.isKeyDown("s"))) {
+                if ((hero != null && getWorld() instanceof MyWorld) && (Greenfoot.isKeyDown("s"))) {
                     TestWorld Test = new TestWorld();
                     Greenfoot.setWorld(Test);
                     break;
                   }
                 if ((hero != null && getWorld() instanceof TestWorld) && (Greenfoot.isKeyDown("s"))) {
-                    if (Greenfoot.isKeyDown("s")){
                     MyWorld World = new MyWorld();
                     Greenfoot.setWorld(World);
                     break;
                  }
-               }
-            }
+               }   
         }
     }  
 }
