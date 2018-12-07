@@ -12,11 +12,12 @@ public class Enemy extends Mover {
     private int xMax;
     private boolean firstAct;
     private int speed;
+    private int n = 1;
     Hero hero;
 
     public Enemy() {
         super();
-        setImage("pokerMad.png");
+        setImage("snailWalk1.png");
         getImage().mirrorHorizontally();
         walkRange = 140;
         firstAct = true;
@@ -39,14 +40,37 @@ public class Enemy extends Mover {
         if (getX() >= xMax) {
             speed *= -1;
             x = xMax;
-            getImage().mirrorHorizontally();
+            getImage().mirrorHorizontally(); 
         } else if (getX() <= xMin) {
             speed *= -1;
             x = xMin;
             getImage().mirrorHorizontally();
         }
-        //hero.kill();
+        if (Hero.lives == 1) {
+            for (Actor hero : getIntersectingObjects(Hero.class)) {
+                if (isTouching(Hero.class)) {
+                    getWorld().removeObject(hero);
+                    Greenfoot.setWorld(new Menu());
+                    Hero.lives = 2;
+                    Hero.hasKeyBlue = false;
+                    Hero.key = 0;
+                    Hero.money = 0;
+                    break;
+                }
+              }
+            }
+        if (Hero.lives >= 2) {
+                if (isTouching(Hero.class)) {
+                    Greenfoot.setWorld(new MyWorld());
+                    Hero.lives--;
+                }
+            }
+        remove();
+        
     }
-    
-    
-}
+    private void remove() {
+      if (getOneObjectAtOffset(25, -20, Hero.class) !=null|| getOneObjectAtOffset(-25,-20, Hero.class) !=null) {
+               getWorld().removeObject(this);
+          }
+        }
+  }

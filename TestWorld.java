@@ -29,7 +29,7 @@ public class TestWorld extends World
             {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 145, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
             {-1, -1, 8, 8, 8, 8, -1, -1, -1, -1, -1, 142, -1, -1, 7, 8, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
             {-1, 144, 6, 6, 6, 6, -1, -1, -1, -1, 7, 8, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, 8, 8, 8, 8, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 6, -1, 2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
-            {-1, 143, 6, 6, 6, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, 8, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
+            {-1, 143, 6, 6, 6, 6, -1, 147, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, 8, 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 7, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
             {11, 11, 6, 6, 6, 6, 11, 11, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 6, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},
             {10, 10, 6, 6, 6, 6, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 6, 8, 8, 9, 11, 11, 11, 11, 11, 11, 11, 11, 11},
             {10, 10, 6, 6, 6, 6, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
@@ -39,15 +39,17 @@ public class TestWorld extends World
         };
 
         // Declareren en initialiseren van de TileEngine klasse om de map aan de world toe te voegen
-        TileEngine te = new TileEngine(this, 60, 60, map);
+        TileEngine te = new TileEngine(this, 70, 70, map);
         // Declarenre en initialiseren van de camera klasse met de TileEngine klasse 
         // zodat de camera weet welke tiles allemaal moeten meebewegen met de camera
         Camera camera = new Camera(te);
         Health health1 = new Health();
+        Health health2 = new Health();
+        Health health3 = new Health();
         
         // Declareren en initialiseren van een main karakter van het spel mijne heet Hero. Deze klasse 
         // moet de klasse Mover extenden voor de camera om te werken
-        Hero hero = new Hero(health1);
+        Hero hero = new Hero();
 
         // Laat de camera een object volgen. Die moet een Mover instatie zijn of een extentie hiervan.
         camera.follow(hero);
@@ -56,6 +58,8 @@ public class TestWorld extends World
         addObject(camera, 0, 0);
         addObject(hero, 300, 200);
         addObject(health1, 100, 100);
+        addObject(health2, 150, 100);
+        addObject(health3, 200, 100);
         
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
         // De collision engine kijkt alleen naar de tiles die de variabele solid op true hebben staan.
@@ -67,9 +71,12 @@ public class TestWorld extends World
     @Override
     public void act() {
         ce.update();
-        if (Greenfoot.isKeyDown("o")){
+        if (Greenfoot.isKeyDown("1")){
         World1 = new MyWorld();
         Greenfoot.setWorld(World1);
+       }
+        if (Greenfoot.isKeyDown("3")){
+        Greenfoot.setWorld(new World3());
        }
      }
 }

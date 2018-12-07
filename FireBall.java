@@ -13,29 +13,28 @@ public class FireBall extends Tile
     }
     public void act() 
     {
-        
         setImage("fireball.png" );
         turn(5);
         move(20);
         move(-20);
         if (Hero.lives == 1) {
             for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if (hero != null) {
+                if (isTouching(Hero.class)) {
                     getWorld().removeObject(hero);
-                    Hero.lives--;
+                    Greenfoot.setWorld(new Menu());
+                    Hero.lives = 2;
+                    Hero.hasKeyBlue = false;
+                    Hero.key = 0;
+                    Hero.money = 0;
                     break;
                 }
               }
             }
-        if (Hero.lives == 2 || Hero.lives == 3) {
-            for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if (hero != null) {
-                    MyWorld World = new MyWorld();
-                    Greenfoot.setWorld(World);
+        if (Hero.lives >= 2) {
+                if (isTouching(Hero.class)) {
+                    Greenfoot.setWorld(new MyWorld());
                     Hero.lives--;
-                    break;
                 }
-              }
             }
             
     }     

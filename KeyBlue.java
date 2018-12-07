@@ -16,11 +16,11 @@ public class KeyBlue extends Tile
     {
         if (Hero.hasKeyBlue == true) {
             setImage("niks.png" );
-    }
+        }
         if (Hero.hasKeyBlue == false) {
             setImage("keyBlue.png" );
-    }
-    remove();
+        }
+        remove();
     }  
     public void remove() {
             if(isTouching(Hero.class) && Hero.hasKeyBlue == false) {

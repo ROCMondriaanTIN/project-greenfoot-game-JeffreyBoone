@@ -14,19 +14,17 @@ public class DoorOpenTop extends Tile
     }
     public void act() 
     {
-        if (Hero.key == 0) {
+        if (Hero.hasKeyBlue == false) {
             setImage("door_closedTop.png" );}
-        if (Hero.key == 1) {
+        if (Hero.hasKeyBlue == true) {
             setImage("door_openTop.png" );
         for (Actor hero : getIntersectingObjects(Hero.class)) {
                 if ((hero != null && getWorld() instanceof MyWorld) && (Greenfoot.isKeyDown("s"))) {
-                    TestWorld Test = new TestWorld();
-                    Greenfoot.setWorld(Test);
+                    Greenfoot.setWorld(new TestWorld());
                     break;
                   }
                 if ((hero != null && getWorld() instanceof TestWorld) && (Greenfoot.isKeyDown("s"))) {
-                    MyWorld World = new MyWorld();
-                    Greenfoot.setWorld(World);
+                    Greenfoot.setWorld(new MyWorld());
                     break;
                  }
                }   

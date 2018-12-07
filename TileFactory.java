@@ -860,13 +860,13 @@ public class TileFactory {
 
             case 141:
             tile = new CoinGold("coinGold.png",
-                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT, TileType.GOLDCOIN);
             tile.isSolid = false;
             break;
 
             case 142:
             tile = new CoinSilver("coinSilver.png",
-                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT, TileType.SILVERCOIN);
             tile.isSolid = false;
             break;
 
@@ -890,6 +890,54 @@ public class TileFactory {
 
             case 146:
             tile = new KeyBlue("keyBlue.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 147:    
+            tile = new Diamond("gemBlue.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT, TileType.DIAMOND);
+            tile.isSolid = false;
+            break;
+
+            case 300:
+            tile = new P1("p1_front.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 301:
+            tile = new P2("p2_front.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 302:
+            tile = new P3("p3_front.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 303:
+            tile = new Grass("grass.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 304:
+            tile = new Sand("sand.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 305:
+            tile = new Snow("snow.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 306:
+            tile = new Stone("stone.png",
                 TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
             tile.isSolid = false;
             break;

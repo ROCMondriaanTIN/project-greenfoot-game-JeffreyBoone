@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author R. Springer
  */
 public class Tile extends BasicTile {
-
+    
     /**
      * Constructor of the tile. Creates a tile based on image, width and height
      *

@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class CoinSilver here.
  * 
@@ -8,12 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CoinSilver extends Tile
 {
-    public String coinsilver;
-    public CoinSilver(String image,int width,int heigth) {
+    Hero h;
+    public CoinSilver(String image,int width,int heigth, TileType type) {
         super(image,width,heigth);
     }
     public void act() 
     {
         setImage("coinSilver.png" );
-    }    
+        if(isTouching(Hero.class)) {
+            getWorld().removeObject(this);
+            h.money += 1;
+        }
+         }    
 }
