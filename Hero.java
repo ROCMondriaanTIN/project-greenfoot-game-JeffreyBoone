@@ -15,7 +15,7 @@ public class Hero extends Mover {
     public String dir;
     public static int lives = 5;
     public static int key = 0;
-    public static boolean hasKeyBlue;
+    public static boolean hasKeyBlue = false;
     TileEngine te;
     private int col;
     private int row;
@@ -25,7 +25,7 @@ public class Hero extends Mover {
     private int i;
     public Hero() {
         super();
-        gravity = 9.8;
+        gravity = 9.81;
         acc = 0.6;
         drag = 0.8;
         setImage("p1.png");
@@ -42,13 +42,13 @@ public class Hero extends Mover {
         getWorld().showText(" X = " + Integer.toString(getX()),950,50);
         getWorld().showText(" Y = " + Integer.toString(getY()),950,75);
         getWorld().showText(" Points = " + Integer.toString(money),950,100);
-        getWorld().showText(" Diamonds = " + Integer.toString(diamonds),950,125);
+        getWorld().showText(" Diamonds = " + Integer.toString(diamonds),925,125);
         getWorld().showText(" Lives = " + Integer.toString(lives),950,150);
         getWorld().showText(" Key = " + Integer.toString(key),950,175);
         getWorld().showText(" World = " + getWorld(),850,200);
         getWorld().showText(" Col = " + Integer.toString(col),950,225);
         getWorld().showText(" Row = " + Integer.toString(row),950,250);
-        
+        remove();
         hudHealth();
         if (velocityY > gravity) {
             velocityY = gravity;
@@ -82,34 +82,63 @@ public class Hero extends Mover {
         }   
     }
 
-    /*private void remove() {
-        if(isTouching(CoinGold.class)) {
-            removeTouching(CoinGold.class);
-            money += 35;}
-        if(isTouching(CoinSilver.class)) {
-            removeTouching(CoinSilver.class);
-            money += 2;
-        }
-
-    }*/
+    private void remove() {
+        if (Hero.lives >= 2) {
+                if (isTouching(FireBall.class)&& getWorld() instanceof World1) {
+                    setLocation(300,400);
+                    Hero.lives--;
+                }
+                if (isTouching(FireBall.class)&& getWorld() instanceof World4) {
+                    setLocation(3300,650);
+                    Hero.lives--;
+                }
+                if (isTouching(Enemy.class)) {
+                    setLocation(300,400);
+                    Hero.lives--;
+                }
+                if (isTouching(Liquid.class)&& getWorld() instanceof World1) {
+                    setLocation(300,400);
+                    Hero.lives--;
+                }
+                if (isTouching(Liquid.class)&& getWorld() instanceof World4) {
+                    setLocation(3300,650);
+                    Hero.lives--;
+                }
+            }
+    }
     
     private boolean ground() {
         Actor ground = getOneObjectAtOffset (0,getImage().getHeight() / 2, Tile.class);
         return ground != null;
     }
 
+    private boolean chainBlock() {
+        Actor chain = getOneObjectAtOffset (0,getImage().getHeight() / 2, ChainBlock.class);
+        return chain != null;
+    }
+    
+    private boolean chain() {
+        Actor chain = getOneObjectAtOffset (0,0, Chain.class);
+        return chain != null;
+    }
     private void handleInput() {
         if (Greenfoot.isKeyDown("space")){
             velocityY = -15;
         }
-        if (Greenfoot.isKeyDown("w") && ground() == true) {
+        if (Greenfoot.isKeyDown("w") && ground() == true && chainBlock() == true) {
+            velocityY = -15;
+            if (velocityY != 0) {
+                setImage("p"+n+"_jump.png");
+            }
+        }
+        if (Greenfoot.isKeyDown("w") && ground() == true && chain() == false) {
             velocityY = -15;
             if (velocityY != 0) {
                 setImage("p"+n+"_jump.png");
             }
         }
         if (Greenfoot.isKeyDown("a")) {
-            velocityX = -5;
+            velocityX = -7;
             if (velocityY != 0) {
                 setImage("p"+n+"_jump.png");
                 getImage().mirrorHorizontally();
@@ -120,7 +149,7 @@ public class Hero extends Mover {
             }
         }
         if (Greenfoot.isKeyDown("d")) {
-            velocityX = 5;
+            velocityX = 7;
             if (velocityY != 0) {
                 setImage("p"+n+"_jump.png");
             }

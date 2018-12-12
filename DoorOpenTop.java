@@ -15,19 +15,31 @@ public class DoorOpenTop extends Tile
     public void act() 
     {
         if (Hero.hasKeyBlue == false) {
-            setImage("door_closedTop.png" );}
+        setImage("door_closedTop.png" );}
         if (Hero.hasKeyBlue == true) {
-            setImage("door_openTop.png" );
+        setImage("door_openTop.png" );
         for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if ((hero != null && getWorld() instanceof MyWorld) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new TestWorld());
+                if ((hero != null && getWorld() instanceof World1) && (Greenfoot.isKeyDown("s"))) {
+                    Greenfoot.setWorld(new World2());
+                    Hero.hasKeyBlue = false;
                     break;
-                  }
-                if ((hero != null && getWorld() instanceof TestWorld) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new MyWorld());
+                }
+                if ((hero != null && getWorld() instanceof World2) && (Greenfoot.isKeyDown("s"))) {
+                    Greenfoot.setWorld(new World3());
+                    Hero.hasKeyBlue = false;
                     break;
-                 }
-               }   
+                }
+                if ((hero != null && getWorld() instanceof World3) && (Greenfoot.isKeyDown("s"))) {
+                    Greenfoot.setWorld(new World4());
+                    Hero.hasKeyBlue = false;
+                    break;
+                }
+                if ((hero != null && getWorld() instanceof World4) && (Greenfoot.isKeyDown("s"))) {
+                    Greenfoot.setWorld(new Menu());
+                    Hero.hasKeyBlue = false;
+                    break;
+                }
         }
+      }
     }  
 }

@@ -1,21 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class P1 here.
+ * Write a description of class Chain here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class P1 extends MenuOptions
+public class Chain extends Tile
 {
-    
-    public P1(String image,int width,int heigth) {
+    public Chain(String image,int width,int heigth) {
         super(image,width,heigth);
     }
     public void act() 
     {
-        if(Greenfoot.mouseClicked(this)) {
-            //Hero.n = 1;
-          }
-    }    
+        // Add your action code here.
+    }      
 }

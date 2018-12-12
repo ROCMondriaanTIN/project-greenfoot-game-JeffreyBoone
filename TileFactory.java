@@ -166,7 +166,7 @@ public class TileFactory {
             break;
 
             case 25:
-            tile = new Tile("castleCenter_rounded.png",
+            tile = new ChainBlock("castleCenter_rounded.png",
                 TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
             tile.isSolid = true;
             break;
@@ -262,9 +262,9 @@ public class TileFactory {
             break;
 
             case 41:
-            tile = new Tile("chain.png",
+            tile = new Chain("chain.png",
                 TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
-            tile.isSolid = true;
+            tile.isSolid = false;
             break;
 
             case 42:
@@ -938,6 +938,42 @@ public class TileFactory {
 
             case 306:
             tile = new Stone("stone.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 307:
+            tile = new Tile("ladder_mid.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 308:
+            tile = new Tile("ladder_top.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 309:
+            tile = new Liquid("liquidWaterTop_mid.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 310:
+            tile = new Liquid("liquidWater.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 311:
+            tile = new Liquid("liquidLavaTop_mid.png",
+                TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+            tile.isSolid = false;
+            break;
+
+            case 312:
+            tile = new Liquid("liquidLava.png",
                 TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
             tile.isSolid = false;
             break;

@@ -59,12 +59,7 @@ public class Enemy extends Mover {
                 }
               }
             }
-        if (Hero.lives >= 2) {
-                if (isTouching(Hero.class)) {
-                    Greenfoot.setWorld(new MyWorld());
-                    Hero.lives--;
-                }
-            }
+        
         remove();
         
     }
