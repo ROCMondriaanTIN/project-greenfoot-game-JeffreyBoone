@@ -39,15 +39,15 @@ public class Hero extends Mover {
         row = getY() / 70;
         velocityX *= drag;
         velocityY += acc;
-        getWorld().showText(" X = " + Integer.toString(getX()),950,50);
-        getWorld().showText(" Y = " + Integer.toString(getY()),950,75);
+        //getWorld().showText(" X = " + Integer.toString(getX()),950,50);
+        //getWorld().showText(" Y = " + Integer.toString(getY()),950,75);
         getWorld().showText(" Points = " + Integer.toString(money),950,100);
         getWorld().showText(" Diamonds = " + Integer.toString(diamonds),925,125);
-        getWorld().showText(" Lives = " + Integer.toString(lives),950,150);
-        getWorld().showText(" Key = " + Integer.toString(key),950,175);
-        getWorld().showText(" World = " + getWorld(),850,200);
-        getWorld().showText(" Col = " + Integer.toString(col),950,225);
-        getWorld().showText(" Row = " + Integer.toString(row),950,250);
+        //getWorld().showText(" Lives = " + Integer.toString(lives),950,150);
+        //getWorld().showText(" Key = " + Integer.toString(key),950,175);
+        //getWorld().showText(" World = " + getWorld(),850,200);
+        //getWorld().showText(" Col = " + Integer.toString(col),950,225);
+        //getWorld().showText(" Row = " + Integer.toString(row),950,250);
         remove();
         hudHealth();
         if (velocityY > gravity) {
@@ -88,6 +88,10 @@ public class Hero extends Mover {
                     setLocation(300,400);
                     Hero.lives--;
                 }
+                if (isTouching(FireBall.class)&& getWorld() instanceof World3) {
+                    setLocation(2700, 655);
+                    Hero.lives--;
+                }
                 if (isTouching(FireBall.class)&& getWorld() instanceof World4) {
                     setLocation(3300,650);
                     Hero.lives--;
@@ -96,7 +100,7 @@ public class Hero extends Mover {
                     setLocation(300,400);
                     Hero.lives--;
                 }
-                if (isTouching(Liquid.class)&& getWorld() instanceof World1) {
+                if (Hero.lives >= 2 && isTouching(Liquid.class)&& getWorld() instanceof World1) {
                     setLocation(300,400);
                     Hero.lives--;
                 }
@@ -122,16 +126,13 @@ public class Hero extends Mover {
         return chain != null;
     }
     private void handleInput() {
-        if (Greenfoot.isKeyDown("space")){
-            velocityY = -15;
-        }
-        if (Greenfoot.isKeyDown("w") && ground() == true && chainBlock() == true) {
+        if (Greenfoot.isKeyDown("space") && ground() == true && chainBlock() == true) {
             velocityY = -15;
             if (velocityY != 0) {
                 setImage("p"+n+"_jump.png");
             }
         }
-        if (Greenfoot.isKeyDown("w") && ground() == true && chain() == false) {
+        if (Greenfoot.isKeyDown("space") && ground() == true && chain() == false) {
             velocityY = -15;
             if (velocityY != 0) {
                 setImage("p"+n+"_jump.png");

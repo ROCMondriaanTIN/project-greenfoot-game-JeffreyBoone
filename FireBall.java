@@ -17,10 +17,10 @@ public class FireBall extends Tile
         turn(5);
         move(20);
         move(-20);
-        if (Hero.lives == 1) {
-            for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if (isTouching(Hero.class)) {
-                    getWorld().removeObject(hero);
+        if (Hero.lives == 1 && isTouching(Hero.class)) {
+            for (Actor def : getIntersectingObjects(Hero.class)) {
+                if (Hero.lives == 1 && isTouching(Hero.class)) {
+                    getWorld().removeObject(def);
                     Greenfoot.setWorld(new Menu());
                     Hero.lives = 2;
                     Hero.hasKeyBlue = false;

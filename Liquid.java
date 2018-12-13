@@ -13,9 +13,9 @@ public class Liquid extends Tile
     }
     public void act() 
     {
-        if (Hero.lives == 1) {
+        if (Hero.lives == 1 && isTouching(Hero.class)) {
             for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if (isTouching(Hero.class)) {
+                if (Hero.lives == 1 && isTouching(Hero.class)) {
                     getWorld().removeObject(hero);
                     Greenfoot.setWorld(new Menu());
                     Hero.lives = 2;

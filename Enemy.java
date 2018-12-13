@@ -46,9 +46,9 @@ public class Enemy extends Mover {
             x = xMin;
             getImage().mirrorHorizontally();
         }
-        if (Hero.lives == 1) {
+        if (isTouching(Hero.class) && Hero.lives == 1) {
             for (Actor hero : getIntersectingObjects(Hero.class)) {
-                if (isTouching(Hero.class)) {
+                if (isTouching(Hero.class) && isTouching(Hero.class)) {
                     getWorld().removeObject(hero);
                     Greenfoot.setWorld(new Menu());
                     Hero.lives = 2;
