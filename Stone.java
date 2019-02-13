@@ -13,7 +13,7 @@ public class Stone extends MenuOptions
     }
     public void act() 
     {
-        if(Greenfoot.mouseClicked(this)) {
+        if(Greenfoot.mouseClicked(this) && Hero.w3c == true) {
             Greenfoot.setWorld(new World4());
           }
     }     

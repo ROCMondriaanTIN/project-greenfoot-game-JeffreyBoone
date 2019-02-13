@@ -13,7 +13,7 @@ public class Snow extends MenuOptions
     }
     public void act() 
     {
-        if(Greenfoot.mouseClicked(this)) {
+        if(Greenfoot.mouseClicked(this) && Hero.w2c == true) {
             Greenfoot.setWorld(new World3());
           }
     }     

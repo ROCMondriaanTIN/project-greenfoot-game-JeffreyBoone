@@ -20,22 +20,26 @@ public class DoorOpenMid extends Tile
         setImage("door_openMid.png" );
         for (Actor hero : getIntersectingObjects(Hero.class)) {
                 if ((hero != null && getWorld() instanceof World1) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new World2());
+                    Greenfoot.setWorld(new Menu());
+                    Hero.w1c = true;
                     Hero.hasKeyBlue = false;
                     break;
                 }
                 if ((hero != null && getWorld() instanceof World2) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new World3());
+                    Greenfoot.setWorld(new Menu());
+                    Hero.w2c = true;
                     Hero.hasKeyBlue = false;
                     break;
                 }
                 if ((hero != null && getWorld() instanceof World3) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new World4());
+                    Greenfoot.setWorld(new Menu());
+                    Hero.w3c = true;
                     Hero.hasKeyBlue = false;
                     break;
                 }
                 if ((hero != null && getWorld() instanceof World4) && (Greenfoot.isKeyDown("s"))) {
                     Greenfoot.setWorld(new Menu());
+                    Hero.w4c = true;
                     Hero.hasKeyBlue = false;
                     break;
                 }

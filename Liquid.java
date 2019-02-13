@@ -18,7 +18,7 @@ public class Liquid extends Tile
                 if (Hero.lives == 1 && isTouching(Hero.class)) {
                     getWorld().removeObject(hero);
                     Greenfoot.setWorld(new Menu());
-                    Hero.lives = 2;
+                    Hero.lives = 3;
                     Hero.hasKeyBlue = false;
                     Hero.key = 0;
                     Hero.money = 0;

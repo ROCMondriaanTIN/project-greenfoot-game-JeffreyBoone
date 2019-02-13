@@ -21,14 +21,18 @@ public class Hero extends Mover {
     private int row;
     public static int n = 1;
     public static int diamonds;
-    
     private int i;
+    public static boolean w1c = false;
+    public static boolean w2c = false;
+    public static boolean w3c = false;
+    public static boolean w4c = false;
     public Hero() {
         super();
         gravity = 9.81;
         acc = 0.6;
         drag = 0.8;
         setImage("p1.png");
+        
 
     }
 
@@ -39,15 +43,17 @@ public class Hero extends Mover {
         row = getY() / 70;
         velocityX *= drag;
         velocityY += acc;
-        //getWorld().showText(" X = " + Integer.toString(getX()),950,50);
-        //getWorld().showText(" Y = " + Integer.toString(getY()),950,75);
-        getWorld().showText(" Points = " + Integer.toString(money),950,100);
+        getWorld().showText(" X = " + Integer.toString(getX()),950,50);
+        getWorld().showText(" Y = " + Integer.toString(getY()),950,75);
+        getWorld().showText(Integer.toString(money),100,150);
         getWorld().showText(" Diamonds = " + Integer.toString(diamonds),925,125);
-        //getWorld().showText(" Lives = " + Integer.toString(lives),950,150);
+        getWorld().showText(Integer.toString(lives),100,100);
         //getWorld().showText(" Key = " + Integer.toString(key),950,175);
         //getWorld().showText(" World = " + getWorld(),850,200);
         //getWorld().showText(" Col = " + Integer.toString(col),950,225);
         //getWorld().showText(" Row = " + Integer.toString(row),950,250);
+        List <Hud> hud = getWorld().getObjects(Hud.class);
+        hud.get(0).addKey(new GreenfootImage("coinGold.png"),100,150);
         remove();
         hudHealth();
         if (velocityY > gravity) {
@@ -62,30 +68,14 @@ public class Hero extends Mover {
 
     private void hudHealth() {
         List <Health> health = getWorld().getObjects(Health.class);
-        health.get(0).addKey(new GreenfootImage("hud_heartEmpty.png"),100,100);
-        health.get(1).addKey(new GreenfootImage("hud_heartEmpty.png"),150,100);
-        health.get(2).addKey(new GreenfootImage("hud_heartEmpty.png"),200,100);
-        if (Hero.lives >= 1) {
-            health.get(0).addKey(new GreenfootImage("hud_heartHalf.png"),100,100);
-        }
-        if (Hero.lives >= 2) {
-            health.get(0).addKey(new GreenfootImage("hud_heartFull.png"),100,100);
-        }
-        if (Hero.lives >= 3) {
-            health.get(1).addKey(new GreenfootImage("hud_heartHalf.png"),150,100);
-        }
-        if (Hero.lives >= 4) {
-            health.get(1).addKey(new GreenfootImage("hud_heartFull.png"),150,100);
-        }
-        if (Hero.lives >= 5) {
-            health.get(2).addKey(new GreenfootImage("hud_heartHalf.png"),200,100);
-        }   
+        health.get(0).addKey(new GreenfootImage("hud_heartFull.png"),100,100);
+         
     }
 
     private void remove() {
         if (Hero.lives >= 2) {
                 if (isTouching(FireBall.class)&& getWorld() instanceof World1) {
-                    setLocation(300,400);
+                    setLocation(300,1200);
                     Hero.lives--;
                 }
                 if (isTouching(FireBall.class)&& getWorld() instanceof World3) {
@@ -101,7 +91,7 @@ public class Hero extends Mover {
                     Hero.lives--;
                 }
                 if (Hero.lives >= 2 && isTouching(Liquid.class)&& getWorld() instanceof World1) {
-                    setLocation(300,400);
+                    setLocation(300,1200);
                     Hero.lives--;
                 }
                 if (isTouching(Liquid.class)&& getWorld() instanceof World4) {
@@ -130,6 +120,7 @@ public class Hero extends Mover {
             velocityY = -15;
             if (velocityY != 0) {
                 setImage("p"+n+"_jump.png");
+                getImage().scale(56, 78);
             }
         }
         if (Greenfoot.isKeyDown("space") && ground() == true && chain() == false) {

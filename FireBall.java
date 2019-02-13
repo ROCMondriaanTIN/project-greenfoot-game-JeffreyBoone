@@ -14,6 +14,7 @@ public class FireBall extends Tile
     public void act() 
     {
         setImage("fireball.png" );
+        getImage().scale(70,70);
         turn(5);
         move(20);
         move(-20);

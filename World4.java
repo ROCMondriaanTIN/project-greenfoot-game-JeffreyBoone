@@ -50,8 +50,8 @@ public class World4 extends World
         addObject(hero, 3300, 650);
         //addObject(new Enemy(), 1170, 410);
         addObject(new Health(), 100, 100);
-        addObject(new Health(), 150, 100);
-        addObject(new Health(), 200, 100);
+        
+        addObject(new Hud(), 100, 150);
         
         // Force act zodat de camera op de juist plek staat.
         camera.act();
