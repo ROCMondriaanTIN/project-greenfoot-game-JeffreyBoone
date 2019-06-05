@@ -28,12 +28,10 @@ public class Hero extends Mover {
     public static boolean w4c = false;
     public Hero() {
         super();
-        gravity = 9.81;
-        acc = 0.6;
+        gravity = 9;
+        acc = 0.5;
         drag = 0.8;
         setImage("p1.png");
-        
-
     }
 
     @Override
@@ -43,6 +41,7 @@ public class Hero extends Mover {
         row = getY() / 70;
         velocityX *= drag;
         velocityY += acc;
+        
         getWorld().showText(" X = " + Integer.toString(getX()),950,50);
         getWorld().showText(" Y = " + Integer.toString(getY()),950,75);
         getWorld().showText(Integer.toString(money),100,150);
@@ -52,10 +51,10 @@ public class Hero extends Mover {
         //getWorld().showText(" World = " + getWorld(),850,200);
         //getWorld().showText(" Col = " + Integer.toString(col),950,225);
         //getWorld().showText(" Row = " + Integer.toString(row),950,250);
-        List <Hud> hud = getWorld().getObjects(Hud.class);
-        hud.get(0).addKey(new GreenfootImage("coinGold.png"),100,150);
+        
         remove();
-        hudHealth();
+        hud();
+        
         if (velocityY > gravity) {
             velocityY = gravity;
         }
@@ -66,39 +65,58 @@ public class Hero extends Mover {
           }
     }
 
-    private void hudHealth() {
+    private void hud() {
         List <Health> health = getWorld().getObjects(Health.class);
         health.get(0).addKey(new GreenfootImage("hud_heartFull.png"),100,100);
-         
+        
+         List <Hud> hud = getWorld().getObjects(Hud.class);
+        hud.get(0).addKey(new GreenfootImage("coinGold.png"),100,150);
     }
 
     private void remove() {
-        if (Hero.lives >= 2) {
+        if (Hero.lives >= 0) {
                 if (isTouching(FireBall.class)&& getWorld() instanceof World1) {
                     setLocation(300,1200);
                     Hero.lives--;
+                    death();
                 }
                 if (isTouching(FireBall.class)&& getWorld() instanceof World3) {
                     setLocation(2700, 655);
                     Hero.lives--;
+                    death();
                 }
                 if (isTouching(FireBall.class)&& getWorld() instanceof World4) {
                     setLocation(3300,650);
                     Hero.lives--;
+                    death();
                 }
                 if (isTouching(Enemy.class)) {
                     setLocation(300,400);
                     Hero.lives--;
+                    death();
                 }
-                if (Hero.lives >= 2 && isTouching(Liquid.class)&& getWorld() instanceof World1) {
+                if (isTouching(Liquid.class)&& getWorld() instanceof World1) {
                     setLocation(300,1200);
                     Hero.lives--;
+                    death();
                 }
                 if (isTouching(Liquid.class)&& getWorld() instanceof World4) {
                     setLocation(3300,650);
                     Hero.lives--;
+                    death();
                 }
-            }
+        }
+    }
+    
+    private void death() {
+        if (Hero.lives == 0) {
+                    getWorld().removeObject(this);
+                    Greenfoot.setWorld(new Menu());
+                    Hero.lives = 5;
+                    Hero.hasKeyBlue = false;
+                    Hero.key = 0;
+                    Hero.money = 0;
+        }   
     }
     
     private boolean ground() {

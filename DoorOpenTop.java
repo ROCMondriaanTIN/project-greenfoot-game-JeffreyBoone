@@ -20,19 +20,19 @@ public class DoorOpenTop extends Tile
         setImage("door_openTop.png" );
         for (Actor hero : getIntersectingObjects(Hero.class)) {
                 if ((hero != null && getWorld() instanceof World1) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new Menu());
+                    Greenfoot.setWorld(new World2());
                     Hero.w1c = true;
                     Hero.hasKeyBlue = false;
                     break;
                 }
                 if ((hero != null && getWorld() instanceof World2) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new Menu());
+                    Greenfoot.setWorld(new World3());
                     Hero.w2c = true;
                     Hero.hasKeyBlue = false;
                     break;
                 }
                 if ((hero != null && getWorld() instanceof World3) && (Greenfoot.isKeyDown("s"))) {
-                    Greenfoot.setWorld(new Menu());
+                    Greenfoot.setWorld(new World4());
                     Hero.w3c = true;
                     Hero.hasKeyBlue = false;
                     break;
